@@ -1,0 +1,42 @@
+########### lecture 2
+
+plot()
+par(mfrow=c())
+
+install.packages("GGally")
+library(GGally)
+
+### spatial frame
+class(meuse)
+
+# coordinates
+coordinates(meuse) = ~x+y
+class(meuse)
+
+plot(meuse)
+
+spplot(meuse, "zinc", main = "zinc concentrations (ppm)")
+
+# Exercise: Plot Copper as a spplot
+
+
+bubble(meuse, "zinc")
+
+bubble(meuse, "zinc", col="blue", main = "zinc concentrations (ppm)")
+
+# EXERCISE: bubble copper in red
+bubble(meuse, "copper", col="red", main = "copper concentrations (ppm)")
+
+
+################ covid data
+# https://services.arcgis.com/5T5nSi527N4F7luB/arcgis/rest/services/COVID_19_HistoricCasesByCountry(pt)View/FeatureServer
+
+# setwd("C:/RStudio/data_book/raster_data/final")
+
+covid <- read.table("covid_agg.csv", head=T)
+
+plot(covid$country,covid$cases)
+# Most basic bubble plot
+ggplot(covid, aes(x=lon, y=lat, size = cases)) +
+    geom_point(alpha=0.3)
+    
