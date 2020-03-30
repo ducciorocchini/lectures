@@ -18,7 +18,18 @@ plot(covid$country,covid$cases,las=1) # y axis horizontal
 plot(covid$country,covid$cases,las=2) # x and y horizontal
 plot(covid$country,covid$cases,las=3) # x axis horizontal
 
-# Most basic bubble plot
+# Plotting data by ggplot2
+# Every ggplot2 plot has three key components:
+# 1. data,
+# 2. A set of aesthetic mappings between variables in the data and visual
+# properties, and
+# 3. At least one layer which describes how to render each observation. Layers
+# are usually created with a geom function.
+# Here’s a simple example:
+ggplot(mpg, aes(x = displ, y = hwy)) +
+geom_point()
+
+
 ggplot(covid, aes(x=lon, y=lat, size = cases)) +
     geom_point(alpha=0.3)
     
